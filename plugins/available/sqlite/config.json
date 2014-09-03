@@ -1,0 +1,12 @@
+{
+    "name": "SQLite 3 DB",
+    "description": "SQLite Database implementation",
+    "database": {
+        "sqlite": {
+            "name": "SQLite DB",
+            "version": "0.1.0",
+            "main": "src/sqlite.js",
+            "init": "context"
+        }
+    }
+}

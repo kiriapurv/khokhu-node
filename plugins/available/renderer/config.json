@@ -1,0 +1,12 @@
+{
+    "name": "Renderer",
+    "description": "HTML Render engine, powered by jade",
+    "libs": {
+        "renderer": {
+            "name": "HTML Renderer",
+            "description": "HTML Render engine, powered by jade",
+            "main": "src/engine.js",
+            "init": "context"
+        }
+    }
+}

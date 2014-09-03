@@ -1,0 +1,85 @@
+mixin pluginRow(counter,key,value)
+    tr
+        td=counter
+        td=key
+        td=value
+
+mixin createForm(pluginName,url,method,params)
+    .panel.panel-default
+        .panel-heading
+            b API
+        form.form-horizontal.panel-body(id="form"+pluginName role="form")
+            .form-group
+                label.col-sm-2.control-label url
+                .col-sm-10
+                    input.form-control(type="text" name="url" id="url"+pluginName value=url)
+            - var counter=1;
+                for param in params
+                    .form-group
+                        label.col-sm-2.control-label=param
+                        .col-sm-10
+                            input.form-control(type="text" name=param)
+        .panel-footer
+            button.btn.btn-primary(id="button"+pluginName onClick="submitForm('"+pluginName+"','"+method+"')" data-loading-text="Loading..") Submit
+
+mixin createReadMe(readMe, pluginName)
+    .readme(id="readme"+pluginName)
+        .panel.panel-default
+            .panel-heading
+                b Read Me
+            .panel-body
+                - if(readMe){
+                    | !{readMe}
+                - } else {
+                    | No ReadMe file found
+                - }
+
+mixin createConfig(config, pluginName)
+    .config(id="config"+pluginName)
+                    .panel.panel-default
+                        .panel-heading
+                            b Config
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th #
+                                    th Key
+                                    th Value
+                            tbody
+                                -var counter=0;
+                                -for(var key in config) {
+                                    - counter++
+                                    +pluginRow(counter,key,config[key])
+                                -}
+
+mixin pluginPane(isActive,pluginName,config)
+    .tab-pane(id="plugin"+pluginName class=(isActive)?"active":"")
+            h3
+                - if(config.name)
+                    p #{config.name}
+                - else
+                    p #{pluginName}
+            hr
+            - if(config.description)
+                p #{config.description}
+            - else {
+                p No Description Available
+            - }
+            hr
+
+            .content
+                +createReadMe(config.readme, pluginName)
+                +createConfig(config,pluginName)
+                .api(id="api"+pluginName)
+                        - if(config.params) {
+                            +createForm(pluginName,config.url,config.method,config.params)
+                        - } else {
+                            p No params available
+                        - }
+                        pre(style="overflow:auto; word-wrap:normal; white-space: pre;")
+                            code(id="output"+pluginName style="overflow-x:auto; white-space:pre;")
+                                | {
+                                |   "output" : "Sample Output"
+                                | }
+
+

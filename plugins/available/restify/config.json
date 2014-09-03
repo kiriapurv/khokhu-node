@@ -1,0 +1,10 @@
+{
+    "name" : "Restify Server",
+    "description" : "Restify Server plugin package",
+    "server" : {
+        "name" : "restify",
+        "description" : "Restify server plugin",
+        "main" : "src/index.js",
+        "init" : "context"
+    }
+}

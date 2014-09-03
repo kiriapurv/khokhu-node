@@ -1,0 +1,37 @@
+doctype html
+html
+    head
+        link(rel="stylesheet",href="/static/css/bootstrap.min.css")
+    body
+
+        include ../../../views/header
+        include components
+        .container(style="margin-top:70px")
+            .row
+                .col-md-2
+                    h3 Services
+                    hr
+                    ul.nav.nav-stacked.nav-pills
+                        - var counter = 0;
+                        - for(var pluginName in service){
+                        - if(service[pluginName].config.params) {
+                            li(class=(counter==0)?"active":"")
+                                a(href="#plugin"+pluginName data-toggle="pill")
+                                    - if(service[pluginName].config.name)
+                                        | #{service[pluginName].config.name}
+                                    - else
+                                        | #{pluginName}
+                                - counter++;
+                        - }
+                        - }
+                .col-md-10(style="border-left:1px solid #f2f2f2;")
+                    .tab-content
+                        - var counter=0;
+                        - for(var pluginName in service)
+                            +pluginPane((counter==0),pluginName,service[pluginName].config)
+                            - counter++;
+
+
+        script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+        script(type="text/javascript", src="/static/js/bootstrap.min.js")
+        script(type="text/javascript", src="/static/apidemos/js/apiDemos.js")

@@ -1,0 +1,12 @@
+{
+    "name": "nedb",
+    "description": "NeDB Database plugin",
+    "database": {
+        "nedb": {
+            "name": "Node embedded database",
+            "description": "https://github.com/louischatriot/nedb",
+            "main": "src/index.js",
+            "version": "0.1.0"
+        }
+    }
+}

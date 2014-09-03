@@ -1,0 +1,6 @@
+{
+    "pluginsDir": {
+        "available": "plugins/available",
+        "enabled": "plugins/enabled"
+    }
+}

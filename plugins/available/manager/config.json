@@ -1,0 +1,62 @@
+{
+    "name": "manager",
+    "description": "Management panel for plugins",
+
+    "users": {
+        "admin": {
+            "role": "admin",
+            "password": "pass4admin"
+        }
+    },
+    "service": {
+        "apidemos": {
+            "name": "API Demos",
+            "url": "/manager/api",
+            "method": "get",
+            "responseType": "text/html",
+            "main": "src/api-demos/index.js",
+            "init": "context",
+            "static": {
+                "/.*": "src/api-demos/static"
+            }
+        },
+        "pluginmanager": {
+            "name": "Plugin Manager",
+            "url": "/manager/plugins",
+            "method": "get",
+            "responseType": "text/html",
+            "main": "src/plugins-manager/index.js",
+            "init": "context",
+            "static": {
+                "/.*": "src/plugins-manager/static"
+            }
+        },
+        "manager": {
+            "name": "Manager Login Page",
+            "url": "/manager",
+            "method": "get",
+            "responseType": "text/html",
+            "main": "src/manager-index/index.js",
+            "init": "context"
+        },
+        "managerlogin": {
+            "name": "Manager Login Handler",
+            "url": "/manager/login",
+            "method": "get",
+            "responseType": "text/html",
+            "main": "src/manager-index/login.js",
+            "init": "context"
+        }
+    },
+    "lifecycle": {
+        "manager-db": {
+            "name": "Manager DB Helper",
+            "description": "Lifecycle plugin to manage sesison databases",
+            "version": "0.1.0",
+            "main": "src/session-helper.js"
+        }
+    },
+    "static": {
+        "/.*": "static"
+    }
+}

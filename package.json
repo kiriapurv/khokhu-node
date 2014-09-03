@@ -1,0 +1,28 @@
+{
+    "name": "khokhu-node",
+    "preferGloba": "false",
+    "version": "0.1.0",
+    "author": "Apurv Kiri <kiriappu@gmail.com>",
+    "description": "Node.js based web service framework which works on concept of 'everything is plugin'",
+    "contributors": [
+        {
+            "name": "Apurv Kiri",
+            "email": "i@apurv.me"
+        }
+    ],
+    "main": "./server.js",
+    "start": "./server.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kiriapurv/Khokhu-Node.git"
+    },
+    "dependencies": {
+        "restify": "2.6.1",
+        "cron": "*",
+        "jade": "*",
+        "markdown": "*",
+        "better-console": "*",
+        "sqlite3": "*",
+        "nedb": "*"
+    }
+}

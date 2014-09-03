@@ -1,0 +1,69 @@
+mixin pluginsNav(plugins)
+    - var active = true;
+    ul.nav.nav-pills.nav-stacked
+        - for(var name in plugins) {
+            - var pName = name.toUpperCase();
+                    h4=pName
+            
+                - var counter = 0;
+                - for(var pluginName in plugins[name]) {
+                    - counter++;
+                    li(class=(active) ? "active" : "")
+                        - var dName = (plugins[name][pluginName].config) ? (plugins[name][pluginName].config.name) ? plugins[name][pluginName].config.name : pluginName : pluginName;
+                        a(href="#"+name+pluginName data-toggle="tab") #{dName}
+                    - active = false
+                - }
+                - if(counter == 0){
+                    h6 
+                        center No Plugins
+                -}
+        -}
+    
+   
+mixin addConfig(config)
+    - if(config) {
+        
+        .panel.panel-default
+            .panel-heading Config
+            .panel-body
+                table.table.table-striped
+                    thead
+                        tr
+                            th #
+                            th Key
+                            th Value
+                    tbody
+                        - var count = 1;
+                        - for(var key in config){
+                        - if(key!="description"){
+                            tr
+                                td=count
+                                td=key
+                                td=config[key]
+                            -count++;
+                        - }
+                        - }
+    - } else {
+        hr
+        h4 No Config Available
+    - }
+    
+mixin pluginsContent(plugins)
+    - var counter = 0;
+    .tab-content
+        - for(var pluginType in plugins){
+            
+            - for(var pluginName in plugins[pluginType]){
+                
+                .tab-pane(id=""+pluginType+pluginName class=(counter==0) ? "active" : "")
+                    -var dName = (plugins[pluginType][pluginName].config) ? (plugins[pluginType][pluginName].config.name) ? plugins[pluginType][pluginName].config.name : pluginName : pluginName;
+                    h2 #{dName}
+                    hr
+                    - var description = (plugins[pluginType][pluginName].config) ? (plugins[pluginType][pluginName].config.description) ? plugins[pluginType][pluginName].config.description : "No description available." : "No description available.";
+                    p=description
+                    +addConfig(plugins[pluginType][pluginName].config)
+                - counter++;
+            - }
+            
+        -}
+        

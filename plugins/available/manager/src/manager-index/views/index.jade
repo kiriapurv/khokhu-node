@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        link(rel="stylesheet",href="/static/css/bootstrap.min.css")
+    body(style="background-color:#EFEFEF")
+        .container
+            form.col-md-4.col-md-offset-4.form-signin(role="form" style="margin-top:10%;" method="get" action="/manager/login")
+                .panel.panel-default
+                    .panel-heading 
+                        b Khokhu Node Manager
+                    .panel-body
+                        input(style="margin:5px" type="text" class="form-control" name="username" placeholder="Username" required autofocus)
+                        input(style="margin:5px" type="password" class="form-control" name="password" placeholder="Password" required)
+                    .panel-footer
+                        button.btn.btn-primary.btn-block(type="submit") Sign In
+                
+                
+        script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+        script(type="text/javascript", src="/static/js/bootstrap.min.js")
